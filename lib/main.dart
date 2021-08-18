@@ -49,6 +49,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool _canEdit = true;
+  TextEditingController _inputController = TextEditingController();
+  TextEditingController _displayController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -85,8 +87,12 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             TextField(
-              decoration:
-                  kTextFieldDecoration.copyWith(hintText: 'Enter your e-mail'),
+              controller: _inputController,
+              decoration: kTextFieldDecoration.copyWith(
+                  hintText: 'Input some text here'),
+
+              /// only allow input after clearing displayed text; disable input when viewing input text
+              enabled: _canEdit ? true : false,
               keyboardType: TextInputType.text,
               style: Theme.of(context).textTheme.headline4,
             ),
@@ -95,19 +101,26 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.blue,
               borderRadius: BorderRadius.circular(10.0),
               child: MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    reverseTextFieldStates();
+                  });
+                },
                 minWidth: 300.0,
                 height: 40.0,
                 child: Text(
-                  _canEdit ? 'Edit' : 'View',
+                  _canEdit ? 'View' : 'Edit',
                 ),
               ),
             ),
-            TextField(
-              decoration: kTextFieldDecoration,
-              enabled: false,
-              maxLines: 12,
-              readOnly: true,
+            Flexible(
+              child: TextField(
+                controller: _displayController,
+                decoration: kTextFieldDecoration,
+                enabled: false,
+                maxLines: 12,
+                readOnly: true,
+              ),
             ),
             SizedBox(
               height: 20,
@@ -122,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: AnimatedTextKit(
                   animatedTexts: [
                     TypewriterAnimatedText('Detective_Khalifah',
-                        speed: const Duration(milliseconds: 500),
+                        speed: const Duration(milliseconds: 250),
                         textAlign: TextAlign.center),
                   ],
                   displayFullTextOnTap: true,
@@ -134,5 +147,18 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  void reverseTextFieldStates() {
+    switch (_canEdit) {
+      case false:
+        _displayController.clear();
+        break;
+      case true:
+        _displayController.text = 'Typed Text: ' + _inputController.text;
+        _inputController.clear();
+        break;
+    }
+    _canEdit = !_canEdit;
   }
 }
