@@ -1,16 +1,12 @@
 # drain_text
 
 Stage2, task_0 of the HNG Internship 8.0 Flutter project.
+![HNG Internship Banner](https://github.com/Detective-Khalifah/Images/blob/main/HNG%20Internship%20brand-logo.png)
 
-## Getting Started
+## App Demo
+The app is basically a clipboard that displays input text.
+![Drain Text](https://github.com/Detective-Khalifah/Images/blob/main/drain_text_demo.mp4)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Simple program that greets the user with name input via console
+![Dart Greets](https://github.com/Detective-Khalifah/Images/blob/main/Stage2%2C%20task_1-Dart_greets.png)
+Check out the Dart code that does the greeting [here](https://github.com/Detective-Khalifah/drain_text/blob/master/greet_code.dart)
