@@ -1,4 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:drain_text/constants.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -84,6 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             TextField(
+              decoration:
+                  kTextFieldDecoration.copyWith(hintText: 'Enter your e-mail'),
               keyboardType: TextInputType.text,
               style: Theme.of(context).textTheme.headline4,
             ),
@@ -101,7 +104,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             TextField(
+              decoration: kTextFieldDecoration,
               enabled: false,
+              maxLines: 12,
+              readOnly: true,
             ),
             SizedBox(
               height: 20,
