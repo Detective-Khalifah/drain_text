@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -80,20 +81,48 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             TextField(
+              keyboardType: TextInputType.text,
               style: Theme.of(context).textTheme.headline4,
             ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text(_canEdit ? 'Edit' : 'View'),
-            ),
-            SizedBox(
-              height: 20,
+            Material(
+              elevation: 5.0,
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(10.0),
+              child: MaterialButton(
+                onPressed: () {},
+                minWidth: 300.0,
+                height: 40.0,
+                child: Text(
+                  _canEdit ? 'Edit' : 'View',
+                ),
+              ),
             ),
             TextField(
               enabled: false,
+            ),
+            SizedBox(
+              height: 20,
+              width: 200.0,
+              child: DefaultTextStyle(
+                style: const TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 2,
+                  color: Colors.blue,
+                ),
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText('Detective_Khalifah',
+                        speed: const Duration(milliseconds: 500),
+                        textAlign: TextAlign.center),
+                  ],
+                  displayFullTextOnTap: true,
+                  repeatForever: true,
+                ),
+              ),
             ),
           ],
         ),
