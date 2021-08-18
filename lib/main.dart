@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: MaterialButton(
                 onPressed: () {
                   setState(() {
-                    reverseTextFieldStates();
+                    toggleInputFieldState();
                   });
                 },
                 minWidth: 300.0,
@@ -149,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void reverseTextFieldStates() {
+  void toggleInputFieldState() {
     switch (_canEdit) {
       case false:
         _displayController.clear();
